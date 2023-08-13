@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <script src="main.js"></script>  -->
+
+    <input type="text" id="inputNilai" />
+    <button class="operator" data-operator="/">+</button>
+    <button id="btn">hasil</button>
+
+    <p>
+      <span id="hasilHitung"></span>
+    </p>
+    <script>
+      const inputNilai = document.getElementById("inputNilai");
+      const tombolTambah = document.querySelectorAll(".operator");
+      const tombolHasil = document.getElementById("btn");
+      const hasilHtg = document.getElementById("hasilHitung");
+
+      let angkaPertama = null;
+      let operator = null;
+
+      tombolTambah.forEach(function (tombol) {
+        tombol.addEventListener("click", function () {
+          operator = tombol.dataset.operator;
+          angkaPertama = parseFloat(inputNilai.value);
+          inputNilai.value = angkaPertama + operator;
+        });
+      });
+
+      tombolHasil.addEventListener("click", function () {
+        if (operator === "/") {
+          const angkaKedua = parseFloat(inputNilai.value.split(operator)[1]);
+          let hasil = angkaPertama + angkaKedua;
+          hasilHtg.textContent = hasil;
+        }
+      });
+    </script>
+  </body>
+</html>

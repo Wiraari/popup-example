@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #tombolSimpan {
+        width: 6em;
+        height: 2em;
+        border: none;
+        background: #58584c;
+        font-size: 1.1em;
+        color: #f5f7f5;
+        border-radius: 5px;
+      }
+      #tombolSimpan:hover {
+        background: #05d305;
+      }
+
+      .bungkus-alert {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: rgb(202, 198, 196);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .kotak-alert {
+        background: #fff;
+        height: 7em;
+        width: 22em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid aqua;
+        border-radius: 5px;
+      }
+
+      p {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1.1em;
+      }
+
+      #btnYa,
+      #btnTutup {
+        border: none;
+        background: rgb(0, 160, 139);
+        width: 5em;
+        height: 2em;
+        border-radius: 4px;
+        color: #fff;
+      }
+      #btnYa:hover,
+      #btnTutup:hover {
+        opacity: 0.8;
+      }
+
+      .key {
+        position: absolute;
+        background-color: #a7a3a3;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+
+        height: 3.5em;
+        width: 15em;
+        font-size: 0.9em;
+        padding: 0.5em;
+        border-radius: 5px;
+      }
+      .key .inputKey {
+        display: inline;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: -5px;
+      }
+      .key p {
+        font-size: 0.9em;
+        font-weight: bolder;
+      }
+      .key .inputKey input {
+        text-align: center;
+        height: 1.5em;
+        width: 10em;
+        outline: none;
+        border: none;
+      }
+      .inputKey button {
+        border: none;
+        background: #bd6d05;
+        color: #fff;
+        margin-left: 10px;
+        width: 4.5em;
+        height: 1.8em;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+      .inputKey button:hover {
+        background: #663c05;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="tombolSimpan">Simpan</button>
+
+    <div class="bungkus-alert" id="bungkusAlert">
+      <div class="kotak-alert">
+        <p id="pesan">Apakah anda yakin untuk menyimpan?</p>
+        <div class="btn">
+          <button id="btnTutup">Tutup</button>
+          <button id="btnYa">Ya</button>
+        </div>
+      </div>
+      <div class="key" id="key">
+        <p>Masukkan KEY anda</p>
+        <div class="inputKey">
+          <input type="text" />
+          <button id="btnKey">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const tombolSimpan = document.getElementById("tombolSimpan");
+      const tombolYa = document.getElementById("btnYa");
+      const tomboltutup = document.getElementById("btnTutup");
+      const kotakAlert = document.getElementById("bungkusAlert");
+      const keyUser = document.getElementById("key");
+      const tombolKey = document.getElementById("btnKey");
+
+      tombolSimpan.addEventListener("click", () => {
+        kotakAlert.style.display = "flex";
+      });
+
+      tombolYa.addEventListener("click", () => {
+        keyUser.style.display = "flex";
+      });
+      tombolKey.addEventListener("click", () => {
+        alert("data sudah di simpan");
+        keyUser.style.display = "none";
+        kotakAlert.style.display = "none";
+      });
+      tomboltutup.addEventListener("click", () => {
+        kotakAlert.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
